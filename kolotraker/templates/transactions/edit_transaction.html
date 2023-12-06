@@ -6,13 +6,13 @@
         <a href="{% url 'transactions' %}">Transactions</a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">
-        Add Transaction
+        Edit Transaction
       </li>
     </ol>
   </nav>
   <div class="card">
     <div class="card-body">
-      <form action="{% url 'add-transaction' %}" method="post">
+      <form action="{% url 'edit-transaction' transaction.id %}" method="post">
         {% csrf_token %}
         {% include "components/messages.html" %}
         <div class="form-group">
@@ -26,7 +26,7 @@
         <div class="form-group">
           <label for="">Category</label>
           <select class="form-control" name="category">
-            <option name="category" value="Choose Category">Choose Category</option>
+            <option selected name="category" value="{{field_values.category}}">{{field_values.category}}</option>
             {% for category in categories %}
             <option name="category" value="{{category.name}}">{{category.name}}</option>
             {% endfor %}
