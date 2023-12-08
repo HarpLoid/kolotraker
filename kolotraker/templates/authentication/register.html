@@ -1,0 +1,57 @@
+{% extends 'layout_auth.html' %} 
+{% load static %}
+{% block content %}
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="card mt-5">
+      
+      <div class="card-body">
+        <div class="card-title py-2">
+            <h4>Register</h4>
+          </div>
+        <form action="{% url "register" %}" method="post">
+          {% csrf_token %}
+          {% include "components/messages.html" %}
+          <div class="form-group">
+            <input
+              type="text"
+              name="username"
+              id="username_field"
+              class="form-control form-control-sm"
+              placeholder="Username"
+              value="{{field_values.username}}"
+            />
+          </div>
+          <div class="invalid-feedback invalid_feedback-username py-0" style="display: none;"></div>
+          <p class="text-sm text-success checking_user"></p>
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              id="email_field"
+              class="form-control form-control-sm"
+              placeholder="E-mail"
+              value="{{field_values.email}}"
+            />
+          </div>
+          <div class="invalid-feedback invalid_feedback-email py-0" style="display: none;"></div>
+          <div class="form-group">
+            <input
+              type="password"
+              name="password"
+              id="password_field"
+              class="form-control form-control-sm"
+              placeholder="Password"
+            />
+            <small class="float-right py-2 show-password-toggle">SHOW</small>
+          </div>
+          <input type="submit" value="Register" class="btn btn-block btn-primary submit-btn" />
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+<script src="{% static 'scripts/register.js' %}"></script>
+{% endblock %}

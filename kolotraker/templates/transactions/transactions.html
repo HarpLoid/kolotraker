@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-10">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="">Transactions</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">My Transactions</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col-md-2">
+        <a href="{% url 'add-transaction' %}" class="btn btn-sm btn-primary">Add Transaction</a>
+      </div>
+    </div>
+    <div class="container">
+      {% include 'components/messages.html' %}
+
+      <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <input type="text" id="search_field" placeholder="Search" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="transaction-table">
+        <table class="table table-stripped table-hover">
+          <thead>
+            <tr>
+              <th>Amount (currency)</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          {% if transactions.count %}
+            <tbody>
+              {% for transaction in page %}
+                <tr>
+                  <td>{{ transaction.amount }}</td>
+                  <td>{{ transaction.category }}</td>
+                  <td>{{ transaction.description }}</td>
+                  <td>{{ transaction.date }}</td>
+                  <td>
+                    <a href="{% url 'edit-transaction' transaction.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                  </td>
+                  <td>
+                    <a href="{% url 'delete-transaction' transaction.id %}" class="btn btn-danger btn-sm">Delete</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          {% endif %}
+        </table>
+      </div>
+      <div class="search-output">
+        <table class="table table-stripped table-hover">
+          <thead>
+            <tr>
+              <th>Amount (currency)</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Date</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+            <tbody class="search-body">
+            </tbody>
+        </table>
+      </div>
+      <div class="pagination-container">
+        <div class="row">
+          <div class="col-md-10">
+            <h6>Page: {{page.number}} of {{page.paginator.num_pages}}</h6>
+          </div>
+          <ul class="pagination align-top float-right mr-auto">
+            {% if page.has_previous %}
+            <li {% if page.number == 1 %} class="page-item active" {% endif %}>
+              <a href="?page1" class="page-link">&laquo; 1</a>
+            </li>
+            <li class="page-item">
+              <a href="?page={{page.previous_page_number}}" class="page-link">Prev</a>
+            </li>
+            {% endif %}
+            {% if page.has_next %}
+            <li class="page-item">
+              <a href="?page={{page.next_page_number}}" class="page-link">Next</a>
+            </li>
+            <li class="page-item">
+              <a href="?page={{page.paginator.num_pages}}" class="page-link">{{page.paginator.num_pages}} &raquo;</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="{% static "scripts/search_transactions.js" %}"></script>
+{% endblock %}
