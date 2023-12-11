@@ -32,7 +32,11 @@
         <table class="table table-stripped table-hover">
           <thead>
             <tr>
-              <th>Amount (currency)</th>
+              <th>
+                Amount
+                <br>
+                ({{currency}})
+              </th>
               <th>Category</th>
               <th>Description</th>
               <th>Date</th>
@@ -60,11 +64,18 @@
           {% endif %}
         </table>
       </div>
+      <div class="noresult" style="display: none;">
+        <h6>No Results</h6>
+      </div>
       <div class="search-output">
         <table class="table table-stripped table-hover">
           <thead>
             <tr>
-              <th>Amount (currency)</th>
+              <th>
+                Amount
+                <br>
+                ({{currency}})
+              </th>
               <th>Category</th>
               <th>Description</th>
               <th>Date</th>

@@ -2,6 +2,7 @@ let timer;
 const delay = 500;
 const search_field = document.querySelector('#search_field');
 const search_output = document.querySelector('.search-output');
+const no_result = document.querySelector('.noresult');
 const transaction_table = document.querySelector('.transaction-table');
 const pagination_container = document.querySelector('.pagination-container');
 const search_tbody = document.querySelector('.search-body');
@@ -25,8 +26,10 @@ search_field.addEventListener('keyup', (event) => {
           transaction_table.style.display = 'none';
           search_output.style.display = 'block';
           if (data.length === 0) {
-            search_output.innerHTML = 'No Results Found';
+            no_result.style.display = "block";
+            search_output.style.display = "none";
           } else {
+            no_result.style.display = "none";
             data.forEach((item) => {
               search_tbody.innerHTML += `
                 <tr>
