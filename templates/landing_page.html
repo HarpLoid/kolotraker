@@ -19,28 +19,54 @@
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">KoloTraker</a>
   <ul class="navbar-nav px-3" style="display: flex; flex-direction: row; align-items: center;">
-    <li class="nav-item text-nowrap ml-4">
+    <li class="nav-item text-nowrap">
         <div class="col-md-2">
-            <a href="{% url 'login' %}" class="btn btn-sm btn-primary">Login</a>
+            <a href="{% url 'login' %}" class="btn btn-sm btn-dark ">Login</a>
           </div>
       </li>
-    <li class="nav-item text-nowrap ml-4">
-      <form action="{% url "logout" %}" method="post">
-        {% csrf_token %}
-        <input class="text text-capitalize" type="submit" value="Log Out">
-      </form>
+      <li class="nav-item text-nowrap">
+        <div class="col-md-2">
+            <a href="{% url 'register' %}" class="btn btn-sm btn-dark">Register</a>
+          </div>
+      </li>
     </li>
   </ul>
 </nav>
-
 <div class="container-fluid">
   <div class="row">
-    {% include 'components/sidebar.html' %}
-
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-    {% block content %}
-
-    {% endblock %}
+    <main role="main" class=" ml-sm-auto col-lg-10 px-4">
+      <section class="hero">
+        <div class="container mt-5">
+            <h2>Welcome to KoloTraker</h2>
+            <p>A simple way to manage your finances</p>
+            <a href="{% url 'register' %}" class="btn btn-sm btn-dark">Get Started</a>
+        </div>
+    </section>
+    <section id="features" class="features">
+      <div class="container mt-3">
+          <h2>Key Features</h2>
+          <div class="card feature">
+            <div class="card-body">
+              <h3>Expense Tracking</h3>
+              <p>Track your expenses easily and efficiently.</p>
+            </div>
+          </div>
+          <div class="card feature">
+            <div class="card-body">
+              <h3>Budgeting</h3>
+              <p>Create budgets for different categories.</p>
+              <p>Coming Soon.</p>
+            </div>
+          </div>
+          <div class="card feature">
+            <div class="card-body">
+              <h3>Goal Setting</h3>
+              <p>Set and track financial goals.</p>
+              <p>Coming Soon.</p>
+            </div>
+          </div>
+      </div>
+  </section>
     </main>
   </div>
 </div>

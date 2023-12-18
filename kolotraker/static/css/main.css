@@ -21,3 +21,43 @@
 .show-password-toggle:hover {
   transform: scale(1.2);
 }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 0;
+}
+
+.features {
+  padding: 50px 0;
+}
+
+.feature {
+  width: 33.33%;
+  float: left;
+  text-align: center;
+}
+
+.testimonials {
+  background-color: #f5f5f5;
+  padding: 50px 0;
+}
+
+.testimonial {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
