@@ -32,7 +32,7 @@ class RegisterView(View):
                 user.set_password(password)
                 user.save()
                 messages.success(request, 'Account has been successfully created')
-                return render(request, 'authentication/register.html')
+                return render(request, 'authentication/login.html')
 
         messages.success(request, 'Success')
         return render(request, 'authentication/login.html')
@@ -82,7 +82,7 @@ class LoginView(View):
                     messages.success(request, f'Welcome, {user.get_username()} Login Successful')
                     return redirect('transactions')
 
-            messages.error(request, 'You username or password is incorect')
+            messages.error(request, 'You username or password is incorrect')
             return render(request, 'authentication/login.html')
 
         messages.error(request, 'Please enter a username and password')
