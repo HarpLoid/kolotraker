@@ -1,8 +1,0 @@
-{
-    "python.analysis.typeCheckingMode": "basic",
-    "editor.renderWhitespace": "trailing",
-    "editor.fontSize": 12,
-    "editor.wordWrap": "on",
-    "editor.codeActionsOnSave": {
-    }
-}
