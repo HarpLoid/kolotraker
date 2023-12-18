@@ -17,7 +17,11 @@ def transactions(request):
     paging = Paginator(transactions, per_page=5)
     page_number = request.GET.get('page')
     page = Paginator.get_page(paging,page_number)
-    currency = UserPreference.objects.get(user=request.user).currency
+    #UserPreference.objects.get(user=request.user).currency
+    if UserPreference.objects.filter(user=request.user).exists():
+        currency = UserPreference.objects.get(user=request.user).currency
+    else:
+        currency = ""
     context = {
         'transactions': transactions,
         'page': page,

@@ -35,7 +35,7 @@ class RegisterView(View):
                 return render(request, 'authentication/register.html')
 
         messages.success(request, 'Success')
-        return render(request, 'authentication/register.html')
+        return render(request, 'authentication/login.html')
 
 
 class UsernameValidationView(View):
